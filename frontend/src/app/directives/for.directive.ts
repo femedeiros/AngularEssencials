@@ -4,18 +4,18 @@ import { Directive, Input, OnInit, ViewContainerRef, TemplateRef } from '@angula
   selector: '[myFor]'
 })
 export class ForDirective implements OnInit {
-  
+
   @Input('myForEm') numbers: number[];
-  
-  constructor(private container: ViewContainerRef, 
-              private template: TemplateRef<any>,
-              private number: number[]) {    
+
+  constructor(
+    private container: ViewContainerRef,
+    private template: TemplateRef<any>) {
     this.numbers = [];
-   }
-  
+  }
+
   ngOnInit(): void {
-    for(let number of this.numbers){
-      this.container.createEmbeddedView(this.template, {$implicit: number});
+    for (let number of this.numbers) {
+      this.container.createEmbeddedView(this.template, { $implicit: number });
     }
   }
 
